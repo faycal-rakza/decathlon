@@ -1,0 +1,7 @@
+springdoc:
+  swagger-ui:
+    path: /swagger
+
+decathlon:
+  basic: "QzBlZjlkNjAxZjkwMWZmMDdkNWUzYzg3YjVkMmM1YmIyOWMzMzk1MGU6U2lhaGZnRkE0NDFSMzliaEJkSEFJZUpOV3Y4MFNBMVpia21pRXV6ZkYya2RIb1ZHYnRuZWR0Qkl3NU9yaTVySQ=="
+  api-key: "b161265e-774e-4c16-ae29-024078274571"
