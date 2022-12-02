@@ -4,12 +4,7 @@
     <title>Getting Started: Handling Form Submission</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
-<body style="
-    margin:0;
-    padding:0;
-    font-family: sans-serif;
-    background: linear-gradient(#141e30, #243b55);
-">
+<body>
 <div style="
   position: absolute;
   top: 50%;
@@ -22,13 +17,8 @@
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
 ">
-<h2>Envoie une image, on renvoie le nom du sport !</h2>
-<form action="#" th:action="@{/getSport}" th:object="${sport}" method="post">
-    <p>Entrer l'URL de l'image:
-        <input type="text" name="imageUrl" th:field="*{imageUrl}"/>
-    </p>
-    <input type="submit" value="Submit" name="Envoyer"/>
-</form>
+<h2>Résultat</h2>
+<p th:utext="${result}"></p>
 </div>
 </body>
 </html>

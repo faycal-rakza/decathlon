@@ -1,13 +1,13 @@
 package com.epsi.decathlon.controller;
 
+import com.epsi.decathlon.entity.ResultEntity;
 import com.epsi.decathlon.entity.SportEntity;
 import com.epsi.decathlon.service.DecathlonService;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 @RestController
 public class DecathlonController {
@@ -26,8 +26,14 @@ public class DecathlonController {
     }
 
     @PostMapping(value = "/getSport")
-    public String getSports(@ModelAttribute SportEntity sport, Model model) throws IOException {
+    public ModelAndView getSports(@ModelAttribute SportEntity sport, Model model) throws IOException {
         System.out.println("imageUrl: " + sport);
-        return "Il est fort probable que le sport sur cette photo soit : " + decathlonService.getSports(BASE_URL + "sportclassifier/predict/", sport.getImageUrl());
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("result");
+        ResultEntity result = new ResultEntity();
+        result.setName("Il est fort probable que le sport sur cette photo soit : " + decathlonService.getSports(BASE_URL + "sportclassifier/predict/", sport.getImageUrl()));
+
+        modelAndView.addObject("result", result.getName());
+        return modelAndView;
     }
 }
