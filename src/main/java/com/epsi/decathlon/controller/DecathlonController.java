@@ -32,8 +32,8 @@ public class DecathlonController {
         modelAndView.setViewName("result");
         ResultEntity result = new ResultEntity();
         result.setName("Il est fort probable que le sport sur cette photo soit : " + decathlonService.getSports(BASE_URL + "sportclassifier/predict/", sport.getImageUrl()));
-
         modelAndView.addObject("result", result.getName());
+        modelAndView.addObject("src", sport.getImageUrl());
         return modelAndView;
     }
 }

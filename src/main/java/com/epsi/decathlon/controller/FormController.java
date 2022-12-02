@@ -1,6 +1,5 @@
 package com.epsi.decathlon.controller;
 
-import com.epsi.decathlon.entity.ResultEntity;
 import com.epsi.decathlon.entity.SportEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
