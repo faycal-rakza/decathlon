@@ -1,10 +1,10 @@
 package com.epsi.decathlon.controller;
 
+import com.epsi.decathlon.entity.SportEntity;
 import com.epsi.decathlon.service.DecathlonService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -21,12 +21,13 @@ public class DecathlonController {
     }
 
     @GetMapping(value = "/ping")
-    public void ping() throws IOException, URISyntaxException {
+    public void ping() throws IOException {
         decathlonService.ping(BASE_URL + "ping");
     }
 
-    @PostMapping(value = "/getSports")
-    public String getSports(@RequestParam String imageUrl) throws IOException {
-        return decathlonService.getSports(BASE_URL + "sportclassifier/predict/", imageUrl);
+    @PostMapping(value = "/getSport")
+    public String getSports(@ModelAttribute SportEntity sport, Model model) throws IOException {
+        System.out.println("imageUrl: " + sport);
+        return "Il est fort probable que le sport sur cette photo soit : " + decathlonService.getSports(BASE_URL + "sportclassifier/predict/", sport.getImageUrl());
     }
 }
